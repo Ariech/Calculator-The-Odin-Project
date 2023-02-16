@@ -1,3 +1,44 @@
+const numbers = document.querySelectorAll(".number");
+const display = document.querySelector(".display");
+const clear = document.querySelector("#clear");
+const operators = document.querySelectorAll(".operator");
+const equals = document.querySelector("#equals")
+
+function addNumberToDisplay() {
+    numbers.forEach((number) => {
+        number.addEventListener('click', () => {
+            resetDisplay();
+            display.textContent += number.textContent;
+        })
+    })
+}
+
+function resetDisplay() {
+    if(display.textContent === '0') {
+        display.textContent = '';
+    }
+}
+
+clear.addEventListener('click', () => {
+    display.textContent = 0;
+})
+
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        display.textContent += ` ${operator.textContent} `;
+    })
+})
+
+equals.addEventListener('click', () => {
+    let arr = (display.textContent.split(" "))
+    display.textContent = operate(arr[1], Number(arr[0]), Number(arr[2]));
+    console.log(display.textContent);
+})
+
+
+
+
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -21,18 +62,20 @@ function divide(num1, num2) {
 function operate(operator, num1, num2) {
     switch(operator) {
         case '+':
-            console.log(`Addition ${add(num1, num2)}`);
+            return (`${add(num1, num2)}`);
             break;
         case '-':
-            console.log(`Subtraction ${subtract(num1, num2)}`);
+            return (`${subtract(num1, num2)}`);
             break;
         case '*':
-            console.log(`Multiplication ${multiply(num1, num2)}`);
+            return(`${multiply(num1, num2)}`);
             break;
         case '/':
-            console.log(`Division ${divide(num1, num2)}`);
+            return(`${divide(num1, num2)}`);
             break;
         default:
             console.log(`Sorry, someting went wrong!`);
     }
 }
+
+addNumberToDisplay();

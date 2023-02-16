@@ -5,7 +5,6 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: "Quicksand", "Roboto", sans-serif;
-  background: var(--yellow);
 }
 
 .calculator-container-parent {
@@ -30,9 +29,10 @@ body {
 
 .button {
   background-color: #fac147;
-  border: 1px solid black;
   padding: 35px 45px;
   text-align: center;
+  user-select: none;
+  cursor: pointer;
 }
 
 .display {
@@ -41,6 +41,15 @@ body {
   background-color: #b2b9b7;
   text-align: right;
   margin-bottom: 10px;
+  height: 25px;
+}
+
+.calculator-container-child,
+.button,
+.display {
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 #clear {
@@ -53,12 +62,4 @@ body {
 
 #equals {
   grid-column: 3/5;
-}
-
-.calculator-container-child,
-.button,
-.display {
-  border-radius: 15px;
-  font-size: 20px;
-  font-weight: 700;
 }
