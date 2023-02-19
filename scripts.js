@@ -1,39 +1,61 @@
 const numbers = document.querySelectorAll(".number");
-const display = document.querySelector(".display");
 const clear = document.querySelector("#clear");
 const operators = document.querySelectorAll(".operator");
 const equals = document.querySelector("#equals")
+const operation = document.querySelector(".operation");
+
+let firstNumber;
+let sign;
+let operatorAdded = 0;
 
 function addNumberToDisplay() {
     numbers.forEach((number) => {
         number.addEventListener('click', () => {
-            resetDisplay();
-            display.textContent += number.textContent;
+            clearZero();
+
+            operation.textContent += number.textContent;
         })
     })
 }
 
-function resetDisplay() {
-    if(display.textContent === '0') {
-        display.textContent = '';
+function clearZero() {
+    if(operation.textContent === '0') {
+        operation.textContent = '';
     }
 }
 
+function resetDisplay() {
+    operation.textContent = '';
+    result.textContent = '';
+}
+
 clear.addEventListener('click', () => {
-    display.textContent = 0;
+    operation.textContent = '0';
+    operatorAdded = 0;
 })
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
-        display.textContent += ` ${operator.textContent} `;
-    })
+        firstNumber = operation.textContent;
+         operation.textContent = '';
+        if(!operatorAdded && operation.textContent !== '0') {
+            sign = `${operator.textContent}`
+            operatorAdded = 1;
+        }
+       
+        return firstNumber;
 })
+});
 
 equals.addEventListener('click', () => {
-    let arr = (display.textContent.split(" "))
-    display.textContent = operate(arr[1], Number(arr[0]), Number(arr[2]));
-    console.log(display.textContent);
+        const secondNumber = operation.textContent;
+        operation.textContent = operate(sign, Number(firstNumber), Number(secondNumber));
+
+        operation.textContent = Number(Math.round(operation.textContent * 100) / 100);
+        operatorAdded = 0;
 })
+
+
 
 
 

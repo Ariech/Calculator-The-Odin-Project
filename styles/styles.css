@@ -29,7 +29,7 @@ body {
 
 .button {
   background-color: #fac147;
-  padding: 35px 45px;
+  padding: 35px;
   text-align: center;
   user-select: none;
   cursor: pointer;
@@ -37,11 +37,7 @@ body {
 
 .display {
   grid-column: 1/5;
-  padding: 40px;
   background-color: #b2b9b7;
-  text-align: right;
-  margin-bottom: 10px;
-  height: 25px;
 }
 
 .calculator-container-child,
@@ -50,6 +46,14 @@ body {
   border-radius: 15px;
   font-size: 20px;
   font-weight: 700;
+  border: none;
+}
+
+.operation {
+  height: 50px;
+  font-size: 40px;
+  padding: 25px;
+  text-align: right;
 }
 
 #clear {
