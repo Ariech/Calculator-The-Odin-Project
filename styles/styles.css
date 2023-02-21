@@ -54,7 +54,8 @@ body {
 }
 
 .operation {
-  height: 50px;
+  word-wrap: break-word;
+  min-height: 50px;
   font-size: 40px;
   padding: 25px;
   text-align: right;
