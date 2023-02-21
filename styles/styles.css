@@ -15,7 +15,7 @@ body {
 }
 
 .calculator-container-child {
-  max-width: 450px;
+  max-width: 460px;
   padding: 20px;
   border: 1px solid #2f2f2f;
   background-color: #2f2f2f;
@@ -33,6 +33,10 @@ body {
   text-align: center;
   user-select: none;
   cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(85%);
 }
 
 .display {

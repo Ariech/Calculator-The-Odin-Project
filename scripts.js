@@ -51,15 +51,11 @@ equals.addEventListener('click', () => {
         const secondNumber = operation.textContent;
         operation.textContent = operate(sign, Number(firstNumber), Number(secondNumber));
 
-        operation.textContent = Number(Math.round(operation.textContent * 100) / 100);
+        if(typeof operation.textContent!== string) {
+            operation.textContent = Number(Math.round(operation.textContent * 100) / 100);
+        }
         operatorAdded = 0;
 })
-
-
-
-
-
-
 
 function add(num1, num2) {
     return num1 + num2;
@@ -75,7 +71,7 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if(num2 === 0) {
-        return "You can't divide by 0!"
+        return "Dumbass!"
     }
 
     return num1 / num2;
@@ -93,6 +89,7 @@ function operate(operator, num1, num2) {
             return(`${multiply(num1, num2)}`);
             break;
         case '/':
+            console.log(`${divide(num1, num2)}`)
             return(`${divide(num1, num2)}`);
             break;
         default:
