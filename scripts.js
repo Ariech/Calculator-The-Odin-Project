@@ -49,9 +49,10 @@ operators.forEach((operator) => {
 
 equals.addEventListener('click', () => {
         const secondNumber = operation.textContent;
-        operation.textContent = operate(sign, Number(firstNumber), Number(secondNumber));
+        let action = operate(sign, Number(firstNumber), Number(secondNumber))
+        operation.textContent = action;
 
-        if(typeof operation.textContent!== string) {
+        if(typeof action !== "string") {
             operation.textContent = Number(Math.round(operation.textContent * 100) / 100);
         }
         operatorAdded = 0;
