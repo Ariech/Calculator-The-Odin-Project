@@ -26,7 +26,6 @@ function clearZero() {
 
 function resetDisplay() {
     operation.textContent = '';
-    result.textContent = '';
 }
 
 clear.addEventListener('click', () => {
@@ -52,7 +51,7 @@ equals.addEventListener('click', () => {
         let action = operate(sign, Number(firstNumber), Number(secondNumber))
         operation.textContent = action;
 
-        if(typeof action !== "string") {
+        if(action !== "Dumbass!") {
             operation.textContent = Number(Math.round(operation.textContent * 100) / 100);
         }
         operatorAdded = 0;
@@ -90,7 +89,6 @@ function operate(operator, num1, num2) {
             return(`${multiply(num1, num2)}`);
             break;
         case '/':
-            console.log(`${divide(num1, num2)}`)
             return(`${divide(num1, num2)}`);
             break;
         default:
