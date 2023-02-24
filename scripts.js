@@ -36,7 +36,8 @@ operators.forEach((operator) => {
         }
 
         operation.textContent = '';
-        sign = operator.textContent;});
+        sign = operator.textContent;
+    });
 });
 
 equals.addEventListener('click', () => {
@@ -48,10 +49,6 @@ equals.addEventListener('click', () => {
             firstNumber = action;
             operation.textContent = Number(Math.round(operation.textContent * 1000) / 1000);
         }
-
-        console.log(`first: ${firstNumber}`)
-        console.log(`second: ${secondNumber}`)
-        console.log(`sign ${sign}`)
 })
 
 function add(num1, num2) {
@@ -92,5 +89,3 @@ function operate(operator, num1, num2) {
             console.log(`Sorry, someting went wrong!`);
     }
 }
-
-// addNumberToDisplay();
