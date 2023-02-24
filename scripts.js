@@ -6,17 +6,6 @@ const operation = document.querySelector(".operation");
 
 let firstNumber;
 let sign;
-let operatorAdded = 0;
-
-function addNumberToDisplay() {
-    numbers.forEach((number) => {
-        number.addEventListener('click', () => {
-            clearZero();
-
-            operation.textContent += number.textContent;
-        })
-    })
-}
 
 function clearZero() {
     if(operation.textContent === '0') {
@@ -30,20 +19,24 @@ function resetDisplay() {
 
 clear.addEventListener('click', () => {
     operation.textContent = '0';
-    operatorAdded = 0;
+    firstNumber = 0;
 })
 
+numbers.forEach((number) => {
+        number.addEventListener('click', (e) => {
+            clearZero();
+            operation.textContent += e.target.textContent;
+        })
+    })
+
 operators.forEach((operator) => {
-    operator.addEventListener('click', () => {
-        firstNumber = operation.textContent;
-         operation.textContent = '';
-        if(!operatorAdded && operation.textContent !== '0') {
-            sign = `${operator.textContent}`
-            operatorAdded = 1;
+    operator.addEventListener('click', (e) => {
+        if(firstNumber == null || firstNumber === 0) {
+            firstNumber = operation.textContent;
         }
-       
-        return firstNumber;
-})
+
+        operation.textContent = '';
+        sign = operator.textContent;});
 });
 
 equals.addEventListener('click', () => {
@@ -52,9 +45,13 @@ equals.addEventListener('click', () => {
         operation.textContent = action;
 
         if(action !== "Dumbass!") {
-            operation.textContent = Number(Math.round(operation.textContent * 100) / 100);
+            firstNumber = action;
+            operation.textContent = Number(Math.round(operation.textContent * 1000) / 1000);
         }
-        operatorAdded = 0;
+
+        console.log(`first: ${firstNumber}`)
+        console.log(`second: ${secondNumber}`)
+        console.log(`sign ${sign}`)
 })
 
 function add(num1, num2) {
@@ -96,4 +93,4 @@ function operate(operator, num1, num2) {
     }
 }
 
-addNumberToDisplay();
+// addNumberToDisplay();
