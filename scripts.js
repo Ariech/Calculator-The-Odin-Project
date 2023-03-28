@@ -6,6 +6,7 @@ const operation = document.querySelector(".operation");
 
 let firstNumber;
 let sign;
+let clearOnNext = false;
 
 function clearZero() {
     if(operation.textContent === '0') {
@@ -25,6 +26,10 @@ clear.addEventListener('click', () => {
 numbers.forEach((number) => {
         number.addEventListener('click', (e) => {
             clearZero();
+            if(clearOnNext) {
+                clearOnNext = false;
+                operation.textContent = "";
+            }
             operation.textContent += e.target.textContent;
         })
     })
@@ -37,6 +42,7 @@ operators.forEach((operator) => {
 
         operation.textContent = '';
         sign = operator.textContent;
+        clearOnNext = false;
     });
 });
 
@@ -44,6 +50,7 @@ equals.addEventListener('click', () => {
         const secondNumber = operation.textContent;
         let action = operate(sign, Number(firstNumber), Number(secondNumber))
         operation.textContent = action;
+        clearOnNext = true;
 
         if(action !== "Dumbass!") {
             firstNumber = action;
